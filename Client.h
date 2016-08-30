@@ -16,10 +16,10 @@ public:
     void Init();
 
 private:
-    //文件描述符
-    int fd;
+    //套接字
+    int socket_fd;
 
-    //套接字地址
+    //套接字名字
     struct sockaddr_in addr;
 
 };
