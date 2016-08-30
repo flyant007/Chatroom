@@ -9,18 +9,19 @@ public:
     //构造函数
     Client();
 
-    //设置套接字地址
+    //设置套接字域的地址
     void SetAddr();
 
-    //初始化一个client
+    //初始化一个Server
     void Init();
 
 private:
-    //套接字
-    int socket_fd;
 
-    //套接字名字
-    struct sockaddr_in addr;
+    //套接字
+    int sockfd;
+
+    //服务器端套接字域的地址
+    struct sockaddr_in server_addr;
 
 };
 

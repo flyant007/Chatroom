@@ -16,11 +16,17 @@ public:
     void Init();
 
 private:
-    //套接字
-    int socket_fd;
+    //服务器端套接字
+    int server_sockfd;
 
-    //套接字域的地址
-    struct sockaddr_in addr;
+    //接收的客户端套接字
+    int client_sockfd;
+
+    //服务器端套接字域的地址
+    struct sockaddr_in server_addr;
+
+    //客户端套接字域的地址
+    struct sockaddr_in client_addr;
 
 };
 #endif // SERVER_H
