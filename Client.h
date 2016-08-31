@@ -7,13 +7,16 @@ class Client
 {
 public:
     //构造函数
-    Client();
+    Client() = default;
 
     //设置套接字域的地址
     void SetAddr();
 
     //初始化一个Server
     void Init();
+
+    //获得套接字
+    int GetSockfd() {return sockfd;}
 
 private:
 

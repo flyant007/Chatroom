@@ -1,5 +1,6 @@
 #include "Common.h"
 #include "Server.h"
+#include <arpa/inet.h> ////包含inet_addr(SERVER_IP)
 
 
 
@@ -43,15 +44,16 @@ void Server::Init()
 
     while(1)
     {
-        std::cout << "server waiting..." << endl;
+        std::cout << "server waiting..." << std::endl;
         //等待客户端建立对该套接字的连接
         //只有当有排在套接字队列里的第一个未处理的连接程序试图连接到server_sockfd时才返回一个新的套接字client_sockfd
         //没有的话accpet()将阻塞。可以对套接字文件描述符server_sockfd设置O_NONBLOCK来改为非阻塞
         //client_sockfd用于与客户端通信，
         //client_addr：存放连接客户的地址，可以为空指针
         //sizeof(client_addr)：指定客户端结构的长度，如果超过该长度被截断，调用返回时，被设置为连接客户地址结构的实际长度
-        //
-        client_sockfd = accept(server_sockfd, (struct sockaddr *) &client_addr, (size_t *) &(sizeof(client_addr)));
+        int client_len;
+        client_len = sizeof(client_addr);
+        client_sockfd = accept(server_sockfd, (struct sockaddr *) &client_addr, (socklen_t *) &client_len);
         if(client_sockfd == -1)
             perror("Accpet error");
     }

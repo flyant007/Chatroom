@@ -7,7 +7,7 @@ class Server
 {
 public:
     //构造函数
-    Server();
+    Server() = default;
 
     //设置套接字域的地址
     void SetAddr();
