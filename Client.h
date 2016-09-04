@@ -1,5 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
+#include <unistd.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h> //AF_INET
@@ -17,6 +19,9 @@ public:
 
     //获得套接字
     int GetSockfd() {return sockfd;}
+
+    //关闭socket连接
+    int Close() {close(sockfd);}
 
 private:
 

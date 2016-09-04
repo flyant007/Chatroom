@@ -3,6 +3,13 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h> //AF_INET
+#include <stdio.h>
+#include <sys/time.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+//服务端类，用来处理客户请求
 class Server
 {
 public:
