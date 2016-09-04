@@ -2,12 +2,12 @@
 #include "Server.h"
 #include <arpa/inet.h> ////包含inet_addr(SERVER_IP)
 
+using namespace std;
 
-
-
-//设置套接字域的地址
-void Server::SetAddr()
+//服务器端类构造函数
+Server::Server()
 {
+    //初始化套接字域的地址
     //设置套接字域：套接字通信中使用的网络介质
     server_addr.sin_family = AF_INET;
 
@@ -15,9 +15,14 @@ void Server::SetAddr()
     server_addr.sin_addr.s_addr = inet_addr(SERVER_IP);
 
     //设置套接字的端口地址
-    server_addr.sin_port = SERVER_PORT;
+    server_addr.sin_port = htons(SERVER_PORT);
 
+    //初始化监听socket
+    server_sockfd = 0;
+
+    epfd = 0;
 }
+
 
 void Server::Init()
 {
